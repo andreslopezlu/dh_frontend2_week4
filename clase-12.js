@@ -38,4 +38,25 @@ function renderizarErrores(listado) {
 
 function mostrarMensajeExito(listado) {
     //   desarrollar la funcion aqui
+    if (listado.length===0){
+        const completadoExitoso = document.createElement('div');
+        completadoExitoso.setAttribute('id', 'envio-exitoso');
+        completadoExitoso.innerHTML = `<p><small>¡Formulario completado con éxito!</small></p>`
+        form.appendChild(completadoExitoso)
+        
+        const textoCompletado = document.querySelector('#envio-exitoso p small')
+        textoCompletado.style.background = "mediumspringgreen";
+        textoCompletado.style.padding = ".5em 1em";
+        textoCompletado.style. color = "midnightblue";
+        textoCompletado.style.margin = ".5em 0";
+
+        const botonEnvio = document.querySelector('button')
+        botonEnvio.disabled=true;
+
+        setTimeout(() =>{
+            completadoExitoso.remove();
+            botonEnvio.disabled=false;
+            form.reset();
+        }, 3000)
+    }
 }
